@@ -38,4 +38,4 @@ Depois de instaladas as dependências basta rodar algum dos seguintes comandos n
 ```
 
 ### Screenshots do projeto
-![alt text](https://github.com/gabrielheiwa/github-delete-many-repos/blob/main/Github-delete-many-repos-login-screenshot.png.jpg?raw=true)
+![alt text](https://github.com/GabrielHeiwa/github-delete-many-repos/blob/main/.github/screenshots/Github-delete-many-repos-login-screenshot.png?raw=true)
