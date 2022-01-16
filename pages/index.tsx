@@ -5,7 +5,7 @@ import ReposList from './ReposList';
 
 const HomePage: React.FC = () => {
     return (
-       <div className='container w-screen h-screen bg-gray-600 overflow-hidden'>
+       <div className='w-screen h-screen bg-gray-600 overflow-hidden'>
            
             <LoginPage />
             <ReposList />

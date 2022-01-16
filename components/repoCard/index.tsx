@@ -36,12 +36,12 @@ const RepoCard: React.FC<RepoCardProps> = ({ id, reponame, url, owner }) => {
         };
     }
 
-    return <div className="flex flex-row justify-between p-4 my-2 mx-8 bg-white rounded-md">
+    return <div className="flex flex-row justify-between p-4 my-2 mx-4 bg-white rounded-md">
         <div className="flex flex-row items-center ">
             <p className="w-44 text-gray-600 font-semibold truncate">{reponame}</p>
             {/* <p className="">{id}</p> */}
             <a href={url} target={"_blank"}>
-                <p className="text-gray-900 font-bold mx-4">URL</p>
+                <p className="text-gray-900 font-bold mx-2">URL</p>
             </a>
         </div>
 
