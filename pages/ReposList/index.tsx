@@ -1,10 +1,12 @@
 import React from "react";
+
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
+import { useRepository } from "../../context/repository";
+
 import RepoCard from "../../components/repoCard";
 
 
-interface repositorieProps {
+export interface repositorieProps {
     name: string;
     id: number;
     html_url: string;
@@ -16,21 +18,10 @@ interface repositorieProps {
 
 const ReposList: React.FC = () => {
     const router = useRouter();
-
-    const [repositories, setRepositories] = React.useState<repositorieProps[]>([]);
+    const { repositories } = useRepository();
 
     React.useEffect(() => {
         router.push('/?#page-repo-list');
-
-        const repositoriesJson = localStorage.getItem('@github-repositories');
-        if (repositoriesJson) {
-            const repositories = JSON.parse(repositoriesJson);
-            setRepositories(repositories);
-            toast.success('Repositórios carregados com sucesso');
-            return;
-        };
-
-        setRepositories([]);
     }, []);
 
     return (

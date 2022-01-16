@@ -4,6 +4,8 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import { TrashIcon } from '@heroicons/react/solid';
 
+import { useRepository } from '../../context/repository';
+
 interface RepoCardProps {
     reponame: string;
     id: number;
@@ -12,6 +14,8 @@ interface RepoCardProps {
 }
 
 const RepoCard: React.FC<RepoCardProps> = ({ id, reponame, url, owner }) => {
+    const { repositories, setRepositories } = useRepository();
+
 
     const handleClickDeleteRepository = async () => {
         try {
@@ -24,6 +28,7 @@ const RepoCard: React.FC<RepoCardProps> = ({ id, reponame, url, owner }) => {
             
             if (request.status === 204) {
                 toast.success('Repositório deletado com sucesso!');
+                setRepositories(repositories.filter(repo => repo.id !== id));
             };
             
         } catch (err) {

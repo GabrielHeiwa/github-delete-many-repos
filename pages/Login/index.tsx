@@ -3,12 +3,14 @@ import Image from 'next/image';
 import Axios from 'axios';
 
 import { useRouter } from 'next/router';
+import { useRepository } from '../../context/repository';
 
 import { ToastContainer, toast } from 'react-toastify';
 
 
 const LoginPage: React.FC = () => {
     const router = useRouter();
+    const { setRepositories } = useRepository();
 
     const [username, setUsername] = React.useState('');
     const [token, setToken] = React.useState('');
@@ -29,8 +31,7 @@ const LoginPage: React.FC = () => {
 
             
             if (response.status === 200) {
-                const dataJsonToString = JSON.stringify(response.data);
-                localStorage.setItem('@github-repositories', dataJsonToString);
+                setRepositories(response.data);
                 router.push('/?#page-repo-list');
                 toast.success('Login realizado com sucesso');
             }
