@@ -1,22 +1,50 @@
 import React from 'react';
 import Image from 'next/image';
+import Axios from 'axios';
+
 import { useRouter } from 'next/router';
+
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const LoginPage: React.FC = () => {
     const router = useRouter();
 
-
     const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [token, setToken] = React.useState('');
 
 
     const handleClickSubmit = async () => {
-        console.log('clicked');
-        await router.push('/?#page-repo-list');
+        if (!username || !token) {
+            toast.error('Porfavor preencha todos os campos');
+            return;
+        };
+
+        try {
+            const response = await Axios.get(`https://api.github.com/users/${username}/repos`, {
+                headers: {
+                    Authorization: `Token ${process.env.GITHUB_TOKEN}`
+                }
+            });
+
+            
+            if (response.status === 200) {
+                const dataJsonToString = JSON.stringify(response.data);
+                localStorage.setItem('@github-repositories', dataJsonToString);
+                router.push('/?#page-repo-list');
+                toast.success('Login realizado com sucesso');
+            }
+
+        } catch(err) {
+            toast.error('Erro ao logar, confira seu nome de usuário e senha');
+            return;
+        };
     };
 
     return (
         <div id='page-login' className='w-screen h-screen bg-gray-600 flex items-center justify-center '>
+            <ToastContainer />
+            
             <div className='w-1/4 h-1/2 rounded-md bg-gray-400'>
                 <form className='w-full h-full flex flex-col justify-around rounded-md'>
                     <div className='flex flex-col items-center justify-center'>
@@ -28,12 +56,18 @@ const LoginPage: React.FC = () => {
                     <div className='flex flex-col'>
                         <input
                             className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm outline-none ring-0 ring-gray-900 focus:ring-1'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
                             type="text"
                             placeholder="username" />
                         <input
                             className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm'
+                            value={token}
+                            onChange={(e) => setToken(e.target.value)}
+                            required
                             type="password"
-                            placeholder="password" />
+                            placeholder="personal token" />
 
                         <input
                             className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm bg-gray-600 cursor-pointer font-semibold hover:text-white hover:bg-gray-500 '
