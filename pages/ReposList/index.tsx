@@ -25,8 +25,12 @@ const ReposList: React.FC = () => {
     }, []);
 
     return (
-        <div id="page-repo-list" className="w-screen h-screen grid md:grid-cols-2 grid-cols-1 overflow-auto bg-gray-600">
-            { repositories.map((item, index) => (
+        <div id="page-repo-list" className="w-screen h-screen pb-4 grid md:grid-cols-2 grid-cols-1 overflow-auto bg-gray-600">
+            <header className="md:col-span-2 m-4">
+                <h1 className="text-2xl text-white font-bold text-center">Repositórios</h1>
+            </header>
+
+            {repositories.map((item, index) => (
                 <RepoCard key={index} 
                     owner={item.owner.login}
                     reponame={item.name} 
