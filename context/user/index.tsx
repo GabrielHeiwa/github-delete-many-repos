@@ -36,6 +36,7 @@ export const UserProvider: React.FC = ({ children }) => {
 
             if (response.status === 200) {
                 setRepositories(response.data);
+                setToken(token);
                 router.push('/?#page-repo-list');
                 toast.success('Login realizado com sucesso');
             }
