@@ -46,11 +46,11 @@ const LoginPage: React.FC = () => {
         <div id='page-login' className='w-screen h-screen bg-gray-600 flex items-center justify-center '>
             <ToastContainer />
             
-            <div className='w-1/4 h-1/2 rounded-md bg-gray-400'>
+            <div className='md:w-1/2 md:h-1/2 w-auto h-auto rounded-md bg-gray-400'>
                 <form className='w-full h-full flex flex-col justify-around rounded-md'>
-                    <div className='flex flex-col items-center justify-center'>
+                    <div className='flex flex-col items-center justify-center my-4'>
                         <Image src={'/images/GitHub-Mark-64px.png'} width={48} height={48} />
-                        <p className='py-2 text-lg text-gray-900 text-center font-bold'>Github remove many repos</p>
+                        <p className='py-2 mx-4 text-lg text-gray-900 text-center font-bold'>Github remove many repos</p>
                     </div>
 
 
