@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
         try {
             const response = await Axios.get(`https://api.github.com/users/${username}/repos`, {
                 headers: {
-                    Authorization: `Token ${process.env.GITHUB_TOKEN}`
+                    Authorization: `Token ${token}`
                 }
             });
 
