@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import { useRepository } from '../../context/repository';
 
 import { ToastContainer, toast } from 'react-toastify';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/solid';
 
 
 const LoginPage: React.FC = () => {
@@ -14,7 +16,10 @@ const LoginPage: React.FC = () => {
 
     const [username, setUsername] = React.useState('');
     const [token, setToken] = React.useState('');
+    const [isOpen, setisOpen] = React.useState(false);
 
+    const closeModal = () => setisOpen(false);
+    const openModal = () => setisOpen(true);
 
     const handleClickSubmit = async () => {
         if (!username || !token) {
@@ -29,14 +34,14 @@ const LoginPage: React.FC = () => {
                 }
             });
 
-            
+
             if (response.status === 200) {
                 setRepositories(response.data);
                 router.push('/?#page-repo-list');
                 toast.success('Login realizado com sucesso');
             }
 
-        } catch(err) {
+        } catch (err) {
             toast.error('Erro ao logar, confira seu nome de usuário e senha');
             return;
         };
@@ -45,7 +50,7 @@ const LoginPage: React.FC = () => {
     return (
         <div id='page-login' className='w-screen h-screen bg-gray-600 flex items-center justify-center '>
             <ToastContainer />
-            
+
             <div className='md:w-1/2 md:h-1/2 w-auto h-auto rounded-md bg-gray-400'>
                 <form className='w-full h-full flex flex-col justify-around rounded-md'>
                     <div className='flex flex-col items-center justify-center my-4'>
@@ -56,22 +61,29 @@ const LoginPage: React.FC = () => {
 
                     <div className='flex flex-col'>
                         <input
-                            className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm outline-none ring-0 ring-gray-900 focus:ring-1'
+                            className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm placeholder:text-gray-600 placeholder:font-semibold'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
                             type="text"
-                            placeholder="username" />
+                            placeholder="Username" />
+
                         <input
-                            className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm'
+                            className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm placeholder:text-gray-600 placeholder:font-semibold'
                             value={token}
                             onChange={(e) => setToken(e.target.value)}
                             required
                             type="password"
-                            placeholder="personal token" />
+                            placeholder="Personal token" />
+
+                        <div className='flex flex-row justify-start mx-4'>
+                            <a className="my-4 pl-2" href="https://github.com/settings/tokens" target={"_blank"}>
+                                <p className='text-md text-gray-900 hover:text-gray-600 font-bold'>Como gerar um token?</p>
+                            </a>
+                        </div>
 
                         <input
-                            className='w-auto pl-2 py-2 my-2 mx-4 rounded-sm bg-gray-600 cursor-pointer font-semibold hover:text-white hover:bg-gray-500 '
+                            className='w-auto p-2 my-2 mx-4 rounded-sm bg-gray-600 cursor-pointer font-bold text-white shadow-lg hover:text-white hover:bg-gray-700 transition delay-75'
                             onClick={handleClickSubmit}
                             type="submit"
                             value="Login" />
