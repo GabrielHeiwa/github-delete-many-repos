@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { TrashIcon } from '@heroicons/react/solid';
 
 import { useRepository } from '../../context/repository';
+import { useUser } from "../../context/user";
 
 interface RepoCardProps {
     reponame: string;
@@ -15,13 +16,13 @@ interface RepoCardProps {
 
 const RepoCard: React.FC<RepoCardProps> = ({ id, reponame, url, owner }) => {
     const { repositories, setRepositories } = useRepository();
-
+    const { token } = useUser();
 
     const handleClickDeleteRepository = async () => {
         try {
             const request = await Axios.delete(`https://api.github.com/repos/${owner}/${reponame}`, {
                 headers: {
-                    'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+                    'Authorization': `token ${token}`,
                     'Accept': 'application/vnd.github.v3+json'
                 }
             });
