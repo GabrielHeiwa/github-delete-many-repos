@@ -10,10 +10,10 @@ const LoginPage: React.FC = () => {
     const [token, setToken] = React.useState('');
 
     return (
-        <div id='page-login' className='w-screen h-screen bg-gray-600 flex items-center justify-center '>
+        <div id='page-login' className='w-screen h-screen flex items-center justify-center '>
             <ToastContainer />
 
-            <div className='md:w-1/2 md:h-1/2 w-auto h-auto rounded-md bg-gray-400'>
+            <div className='md:w-1/2 md:h-1/2 w-auto h-auto rounded-md bg-gray-600'>
                 <form className='w-full h-full flex flex-col justify-around rounded-md'>
                     <div className='flex flex-col items-center justify-center my-4'>
                         <Image src={'/images/GitHub-Mark-64px.png'} width={48} height={48} />
@@ -47,7 +47,7 @@ const LoginPage: React.FC = () => {
                         <input
                             className='w-auto p-2 my-2 mx-4 rounded-sm bg-gray-600 cursor-pointer font-bold text-white shadow-lg hover:text-white hover:bg-gray-700 transition delay-75'
                             onClick={() => login({ username, token })}
-                            type="submit"
+                            type="button"
                             value="Login" />
                     </div>
                 </form>

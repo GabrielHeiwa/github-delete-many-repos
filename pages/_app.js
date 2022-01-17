@@ -8,7 +8,7 @@ import { UserProvider } from '../context/user';
 export default function MyApp({ Component, pageProps }) {
   return <RepositoryProvider>
     <UserProvider>
-      <Component {...pageProps} />
+    <Component {...pageProps} />
     </UserProvider>
   </RepositoryProvider>
 }
