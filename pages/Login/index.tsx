@@ -1,51 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import Axios from 'axios';
-
-import { useRouter } from 'next/router';
-import { useRepository } from '../../context/repository';
-
-import { ToastContainer, toast } from 'react-toastify';
-import { Dialog, Transition } from '@headlessui/react';
-import { XIcon } from '@heroicons/react/solid';
-
+import { useUser } from '../../context/user';
+import { ToastContainer } from 'react-toastify';
 
 const LoginPage: React.FC = () => {
-    const router = useRouter();
-    const { setRepositories } = useRepository();
+    const { login } = useUser();
 
     const [username, setUsername] = React.useState('');
     const [token, setToken] = React.useState('');
-    const [isOpen, setisOpen] = React.useState(false);
-
-    const closeModal = () => setisOpen(false);
-    const openModal = () => setisOpen(true);
-
-    const handleClickSubmit = async () => {
-        if (!username || !token) {
-            toast.error('Porfavor preencha todos os campos');
-            return;
-        };
-
-        try {
-            const response = await Axios.get(`https://api.github.com/users/${username}/repos`, {
-                headers: {
-                    Authorization: `Token ${token}`
-                }
-            });
-
-
-            if (response.status === 200) {
-                setRepositories(response.data);
-                router.push('/?#page-repo-list');
-                toast.success('Login realizado com sucesso');
-            }
-
-        } catch (err) {
-            toast.error('Erro ao logar, confira seu nome de usuário e senha');
-            return;
-        };
-    };
 
     return (
         <div id='page-login' className='w-screen h-screen bg-gray-600 flex items-center justify-center '>
@@ -84,7 +46,7 @@ const LoginPage: React.FC = () => {
 
                         <input
                             className='w-auto p-2 my-2 mx-4 rounded-sm bg-gray-600 cursor-pointer font-bold text-white shadow-lg hover:text-white hover:bg-gray-700 transition delay-75'
-                            onClick={handleClickSubmit}
+                            onClick={() => login({ username, token })}
                             type="submit"
                             value="Login" />
                     </div>
