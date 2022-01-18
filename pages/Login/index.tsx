@@ -23,7 +23,7 @@ const LoginPage: React.FC = () => {
             <ToastContainer />
 
             <div className='w-screen h-screen flex flex-row items-center justify-center'>
-                <div className='w-full h-full p-4 md:w-3/4 md:h-3/4 shadow-4xl flex flex-col md:flex-row justify-between overflow-hidden'>
+                <div className='w-full h-full m-4 p-4 md:w-3/4 md:h-3/4 shadow-4xl flex flex-col md:flex-row justify-between overflow-hidden'>
 
                     <div id='github-logo' className='h-2/4 w-full md:w-1/4 md:h-full flex flex-col items-center justify-center'>
                         <Image
