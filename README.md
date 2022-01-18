@@ -5,10 +5,8 @@ A ideia para este projeto veio por conta de uma necessidade que eu tinha de faze
 Então uma lampâda ascentou em minha cabeça, eu sou um programador e gosto de resolver problemas então... Que tal eu resolver este e trazer para a comunidade e dito é feito aqui estou eu apresentando o meu primeiro projeto que destino a ajudar outras pessoas com a mesma dor que a minha.
 
 #
-Se você quiser ter uma noção de como ficou o projeto basta acessar por este [link](https://github=delete-many-repos.vercel.app)
+Se você quiser ter uma noção de como ficou o projeto basta acessar por este [link](https://github-delete-many-repos-mgl0xpvin-gabrielheiwa.vercel.app/)
 
-<br />
-<br />
 <br />
 
 Mas caso queira instalar e rodar na sua máquina basta seguir as intruções abaixo.
