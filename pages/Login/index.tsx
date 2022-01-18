@@ -68,6 +68,7 @@ const LoginPage: React.FC = () => {
 
                             <div className='group w-2/4 h-auto p-4 mt-8'>
                                 <button
+                                    onClick={() => login({username, token})}
                                     className='w-full h-full py-2 text-gray-800 text-lg font-semibold rounded-sm bg-gray-100 group-hover:bg-gray-300'
                                     type='button'>
                                     <p className='group-hover:-translate-y-0.5 transition delay-75'>Entrar</p>

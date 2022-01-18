@@ -1,9 +1,9 @@
 import React from "react";
 
-import { useRouter } from "next/router";
 import { useRepository } from "../../context/repository";
 
 import RepoCard from "../../components/repoCard";
+import Router from "next/router";
 
 
 export interface repositorieProps {
@@ -17,8 +17,8 @@ export interface repositorieProps {
 
 
 const ReposList: React.FC = () => {
-    const router = useRouter();
     const { repositories } = useRepository();
+
 
     return (
         <div id="page-repo-list" className="w-screen h-screen pb-4 grid md:grid-cols-2 grid-cols-1 overflow-auto bg-gray-600">
