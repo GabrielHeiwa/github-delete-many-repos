@@ -22,7 +22,7 @@ const ReposList: React.FC = () => {
 
     return (
         <div id="page-repo-list" className="w-screen h-screen pb-4 grid md:grid-cols-2 grid-cols-1 overflow-auto bg-gray-600">
-            <header className="md:col-span-2 m-4">
+            <header className="md:col-span-2 m-4 p-4">
 
                 {
                     !repositories.length
@@ -38,6 +38,7 @@ const ReposList: React.FC = () => {
                     id={item.id}
                     url={item.html_url} />
             ))}
+
         </div>
     );
 };
