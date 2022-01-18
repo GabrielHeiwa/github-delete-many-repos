@@ -23,9 +23,9 @@ const LoginPage: React.FC = () => {
             <ToastContainer />
 
             <div className='w-screen h-screen flex flex-row items-center justify-center'>
-                <div className='w-3/4 h-3/4 shadow-xl flex justify-between overflow-hidden'>
+                <div className='w-full h-full p-4 md:w-3/4 md:h-3/4 shadow-4xl flex flex-col md:flex-row justify-between overflow-hidden'>
 
-                    <div id='github-logo' className='w-1/4 h-full flex flex-col items-center justify-center'>
+                    <div id='github-logo' className='h-2/4 w-full md:w-1/4 md:h-full flex flex-col items-center justify-center'>
                         <Image
                             src='/images/GitHub-Mark-120px-plus.png'
                             alt='Github logo'
@@ -39,29 +39,29 @@ const LoginPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div id='form' className='w-3/4 h-full bg-gray-700'>
+                    <div id='form' className='w-full md:w-3/4 h-full bg-gray-700'>
                         <form className='w-full h-full p-4 flex flex-col items-center justify-center'>
-                            <div className='w-2/4 h-auto m-4 flex flex-col'>
+                            <div className='w-3/4 h-auto m-4 flex flex-col'>
                                 <label className='text-white pl-1 pb-1'>Username</label>
                                 <input
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    placeholder='Enter with your GitHub username'
+                                    placeholder='GitHub username'
                                     className='outline-none rounded-sm py-2 pl-2 font-semibold placeholder:text-gray-700'
                                     type="text" />
                             </div>
 
-                            <div className='w-2/4 h-auto m-4 flex flex-col relative'>
+                            <div className='w-3/4 h-auto m-4 flex flex-col relative'>
                                 <label className='text-white pl-1 pb-1'>Token</label>
                                 <input
                                     ref={inputTokendRef}
                                     value={token}
                                     onChange={(e) => setToken(e.target.value)}
-                                    placeholder='Enter with your GitHub Personal token'
+                                    placeholder='Github token'
                                     className="outline-none rounded-sm py-2 pl-2 font-semibold placeholder:text-gray-700"
                                     type="password" />
                                 {showToken 
-                                    ? <EyeIcon className='cursor-pointer w-8 h-8' onClick={handleClickShowToken} /> 
+                                    ? <EyeIcon className='text-gray-800 cursor-pointer w-6 h-6 absolute right-0 bottom-0 m-2 hover:text-gray-600 bg-white' onClick={handleClickShowToken} /> 
                                     : <EyeOffIcon className='text-gray-800 cursor-pointer w-6 h-6 absolute right-0 bottom-0 m-2 hover:text-gray-600' onClick={handleClickShowToken} />}
 
                             </div>
